@@ -1,7 +1,7 @@
 import { ModuleFederationConfig } from '@nx/rspack/module-federation';
 
 const config: ModuleFederationConfig = {
-  name: 'remoteModuleFederation2',
+  name: 'remoteModuleFederation',
   exposes: {
     './Module': './src/remote-entry.ts',
   },

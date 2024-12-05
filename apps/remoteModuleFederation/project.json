@@ -1,5 +1,5 @@
 {
-  "name": "remote-module-federation",
+  "name": "remoteModuleFederation",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/remoteModuleFederation/src",
   "projectType": "application",
@@ -13,9 +13,9 @@
         "target": "web",
         "outputPath": "dist/apps/remoteModuleFederation",
         "index": "apps/remoteModuleFederation/src/index.html",
-        "main": "apps/remoteModuleFederation/src/main.tsx",
+        "main": "apps/remoteModuleFederation/src/main.ts",
         "tsConfig": "apps/remoteModuleFederation/tsconfig.app.json",
-        "rspackConfig": "apps/remoteModuleFederation/rspack.config.js",
+        "rspackConfig": "apps/remoteModuleFederation/rspack.config.ts",
         "assets": [
           "apps/remoteModuleFederation/src/favicon.ico",
           "apps/remoteModuleFederation/src/assets"
@@ -28,29 +28,37 @@
         "production": {
           "mode": "production",
           "optimization": true,
-          "sourceMap": false
+          "sourceMap": false,
+          "rspackConfig": "apps/remoteModuleFederation/rspack.config.prod.ts"
         }
       }
     },
     "serve": {
-      "executor": "@nx/rspack:dev-server",
+      "executor": "@nx/rspack:module-federation-dev-server",
       "options": {
-        "buildTarget": "remote-module-federation:build:development",
+        "buildTarget": "remoteModuleFederation:build:development",
         "port": 4202
       },
       "configurations": {
         "development": {},
         "production": {
-          "buildTarget": "remote-module-federation:build:production"
+          "buildTarget": "remoteModuleFederation:build:production"
         }
       }
     },
     "serve-static": {
-      "executor": "@nx/web:file-server",
-      "dependsOn": ["build"],
+      "executor": "@nx/rspack:module-federation-static-server",
+      "defaultConfiguration": "production",
       "options": {
-        "buildTarget": "remote-module-federation:build",
-        "spa": true
+        "serveTarget": "remoteModuleFederation:serve"
+      },
+      "configurations": {
+        "development": {
+          "serveTarget": "remoteModuleFederation:serve:development"
+        },
+        "production": {
+          "serveTarget": "remoteModuleFederation:serve:production"
+        }
       }
     }
   }

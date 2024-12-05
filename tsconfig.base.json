@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "remoteModuleFederation2/Module": [
-        "apps/remoteModuleFederation2/src/remote-entry.ts"
+      "remoteModuleFederation/Module": [
+        "apps/remoteModuleFederation/src/remote-entry.ts"
       ]
     }
   },
