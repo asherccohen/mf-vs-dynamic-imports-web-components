@@ -21,7 +21,11 @@ const router = createBrowserRouter([
       {
         path: '/contacts',
         errorElement: <>There was an error importing the component</>,
-        element: <div>This is the generated Contacts route</div>,
+        element: (
+          <div style={{ display: 'flex', gap: '2rem' }}>
+            This is the generated Contacts route
+          </div>
+        ),
       },
     ],
   },

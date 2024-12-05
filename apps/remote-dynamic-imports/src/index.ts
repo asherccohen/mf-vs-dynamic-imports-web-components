@@ -4,3 +4,9 @@ export async function getComponentToExposeElementV1(): Promise<unknown> {
   );
   return ComponentToExposeElement;
 }
+
+const modules = {
+  getComponentToExposeElementV1,
+};
+
+export default modules;

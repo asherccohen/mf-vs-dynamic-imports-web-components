@@ -1,7 +1,7 @@
 import { createLazyComponentFromRuntimeElement } from './create-runtime-component';
 
 //Static types, these should come from a package or other sharing mechanism
-type ComponentToConsumeProps = {
+export type ComponentToConsumeProps = {
   locale: string;
   onAddClick?: () => void;
 };

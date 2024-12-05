@@ -68,3 +68,5 @@ export class ComponentToExposeElement extends HTMLElement {
 }
 
 customElements.define('component-to-expose', ComponentToExposeElement);
+
+export default ComponentToExposeElement;
