@@ -6,7 +6,6 @@ export interface ComponentToExposeAttributes {
 }
 
 export interface ComponentToExposeProperties {
-  callApi?: () => void;
   onAddClick?: () => void;
 }
 
@@ -16,20 +15,19 @@ export class ComponentToExposeElement extends HTMLElement {
 
   constructor() {
     super();
-    this.#onPropertyChange(['callApi', 'onAddClick'], () => this.#render());
+    this.#onPropertyChange(['onAddClick'], () => this.#render());
   }
 
   #render(): void {
     const locale = this.getAttribute('locale');
 
-    if (!this.#reactRoot || !locale || !this.#properties.callApi) {
+    if (!this.#reactRoot || !locale) {
       return;
     }
 
     this.#reactRoot.render(
       <ComponentToExpose
         locale={locale}
-        callApi={this.#properties.callApi}
         onAddClick={this.#properties.onAddClick}
       />
     );

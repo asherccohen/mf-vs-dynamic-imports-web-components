@@ -35,7 +35,8 @@
     "serve": {
       "executor": "@nx/rspack:dev-server",
       "options": {
-        "buildTarget": "remote-dynamic-imports:build:development"
+        "buildTarget": "remote-dynamic-imports:build:development",
+        "port": 4201
       },
       "configurations": {
         "development": {},

@@ -2,7 +2,6 @@ import { PropsWithChildren } from 'react';
 
 type Props = {
   locale: string;
-  callApi?: () => void;
   onAddClick?: () => void;
 };
 
