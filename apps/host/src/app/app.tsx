@@ -1,17 +1,24 @@
+import { PropsWithChildren } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles.css';
-// import { LazyComponentToConsume } from './component-to-consume';
 
-export function App() {
+export function App({ children }: PropsWithChildren) {
   return (
     <div>
       <h1>Host App</h1>
 
-      {/* <Suspense fallback={<span>Loading...</span>}>
-        <LazyComponentToConsume
-          locale={'en'}
-          onAddClick={() => console.log('add click')}
-        />
-      </Suspense> */}
+      <br />
+      <hr />
+      <br />
+      <div role="navigation">
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+        </ul>
+      </div>
+
+      {children}
     </div>
   );
 }

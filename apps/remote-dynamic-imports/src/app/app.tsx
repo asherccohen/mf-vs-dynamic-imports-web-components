@@ -1,44 +1,31 @@
+import { PropsWithChildren } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles.css';
 
-import { Link, Route, Routes } from 'react-router-dom';
-
-export function App() {
+export function App({ children }: PropsWithChildren) {
   return (
     <div>
       <h1>Dynamic Imports Remote App</h1>
-      {/* START: routes */}
-      {/* These routes and navigation have been generated for you */}
-      {/* Feel free to move and update them to fit your needs */}
+
+      <br />
+      <hr />
+      <br />
       <div role="navigation">
-        <ul>
+        <ul style={{ display: 'flex', gap: '2rem' }}>
           <li>
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/page-2">Page 2</Link>
+            <Link to="/contacts">Contacts</Link>
           </li>
         </ul>
       </div>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div>
-              This is the generated root route.{' '}
-              <Link to="/page-2">Click here for page 2.</Link>
-            </div>
-          }
-        />
-        <Route
-          path="/remote-index"
-          element={
-            <div>
-              <Link to="/">Click here to go back to root page.</Link>
-            </div>
-          }
-        />
-      </Routes>
-      {/* END: routes */}
+
+      <br />
+      <hr />
+      <br />
+
+      {children}
     </div>
   );
 }

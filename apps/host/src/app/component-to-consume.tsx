@@ -6,10 +6,16 @@ type ComponentToConsumeProps = {
   onAddClick?: () => void;
 };
 
-export const LazyComponentToConsume =
+export const LazyComponentToConsumeWeb =
   createLazyComponentFromRuntimeElement<ComponentToConsumeProps>({
-    runtimeElementsHref: process.env.REACT_APP_OPPORTUNITY_ELEMENTS_URL,
-    contextPath: '/',
+    runtimeElementsHref: 'http://localhost:4201/main.js',
+    // contextPath: '',
     getterMethodName: 'getComponentToExposeElementV1',
     tagName: 'component-to-expose',
   });
+
+export const LazyComponentToConsume = (props: ComponentToConsumeProps) => {
+  return <div>Lazy component</div>;
+};
+
+export default LazyComponentToConsume;

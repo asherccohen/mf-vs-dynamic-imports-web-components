@@ -1,5 +1,3 @@
-// runtimeElementUtils.ts
-/* eslint-disable no-restricted-imports, import/dynamic-import-chunkname */
 import React, { FC, lazy } from 'react';
 
 export function createLazyComponentFromRuntimeElement<ComponentProps>({
@@ -13,7 +11,6 @@ export function createLazyComponentFromRuntimeElement<ComponentProps>({
   getterMethodName: string;
   tagName: string;
 }): FC<ComponentProps> {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const { createComponent } = require('@lit-labs/react');
   return lazy(async () => {
     const path = [
