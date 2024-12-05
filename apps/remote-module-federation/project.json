@@ -1,0 +1,56 @@
+{
+  "name": "remote-module-federation",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/remote-module-federation/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/rspack:rspack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "web",
+        "outputPath": "dist/apps/remote-module-federation",
+        "index": "apps/remote-module-federation/src/index.html",
+        "main": "apps/remote-module-federation/src/main.tsx",
+        "tsConfig": "apps/remote-module-federation/tsconfig.app.json",
+        "rspackConfig": "apps/remote-module-federation/rspack.config.js",
+        "assets": [
+          "apps/remote-module-federation/src/favicon.ico",
+          "apps/remote-module-federation/src/assets"
+        ]
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production",
+          "optimization": true,
+          "sourceMap": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/rspack:dev-server",
+      "options": {
+        "buildTarget": "remote-module-federation:build:development"
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "buildTarget": "remote-module-federation:build:production"
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "remote-module-federation:build",
+        "spa": true
+      }
+    }
+  }
+}

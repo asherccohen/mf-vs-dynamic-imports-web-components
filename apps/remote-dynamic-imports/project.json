@@ -1,0 +1,56 @@
+{
+  "name": "remote-dynamic-imports",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/remote-dynamic-imports/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/rspack:rspack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "web",
+        "outputPath": "dist/apps/remote-dynamic-imports",
+        "index": "apps/remote-dynamic-imports/src/index.html",
+        "main": "apps/remote-dynamic-imports/src/main.tsx",
+        "tsConfig": "apps/remote-dynamic-imports/tsconfig.app.json",
+        "rspackConfig": "apps/remote-dynamic-imports/rspack.config.js",
+        "assets": [
+          "apps/remote-dynamic-imports/src/favicon.ico",
+          "apps/remote-dynamic-imports/src/assets"
+        ]
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production",
+          "optimization": true,
+          "sourceMap": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/rspack:dev-server",
+      "options": {
+        "buildTarget": "remote-dynamic-imports:build:development"
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "buildTarget": "remote-dynamic-imports:build:production"
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "remote-dynamic-imports:build",
+        "spa": true
+      }
+    }
+  }
+}
