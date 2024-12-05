@@ -1,5 +1,5 @@
 {
-  "name": "remote-dynamic-imports",
+  "name": "remoteDynamicImports",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/remoteDynamicImports/src",
   "projectType": "application",
@@ -35,13 +35,13 @@
     "serve": {
       "executor": "@nx/rspack:dev-server",
       "options": {
-        "buildTarget": "remote-dynamic-imports:build:development",
+        "buildTarget": "remoteDynamicImports:build:development",
         "port": 4201
       },
       "configurations": {
         "development": {},
         "production": {
-          "buildTarget": "remote-dynamic-imports:build:production"
+          "buildTarget": "remoteDynamicImports:build:production"
         }
       }
     },
@@ -49,7 +49,7 @@
       "executor": "@nx/web:file-server",
       "dependsOn": ["build"],
       "options": {
-        "buildTarget": "remote-dynamic-imports:build",
+        "buildTarget": "remoteDynamicImports:build",
         "spa": true
       }
     }

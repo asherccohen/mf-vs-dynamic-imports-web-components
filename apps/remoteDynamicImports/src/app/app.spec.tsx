@@ -19,6 +19,6 @@ describe('App', () => {
         <App />
       </BrowserRouter>
     );
-    expect(getByText(/Welcome remote-dynamic-imports/gi)).toBeTruthy();
+    expect(getByText(/Welcome remoteDynamicImports/gi)).toBeTruthy();
   });
 });

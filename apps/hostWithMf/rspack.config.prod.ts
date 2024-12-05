@@ -1,7 +1,7 @@
 import { composePlugins, withNx, withReact } from '@nx/rspack';
 import {
-  withModuleFederation,
   ModuleFederationConfig,
+  withModuleFederation,
 } from '@nx/rspack/module-federation';
 
 import baseConfig from './module-federation.config';
@@ -25,7 +25,7 @@ const prodConfig: ModuleFederationConfig = {
    *   ['app2', 'http://example.com/path/to/app2/remoteEntry.js'],
    * ]
    */
-  remotes: [['remote-module-federation2', 'http://localhost:4201/']],
+  remotes: [['remoteModuleFederation', 'http://localhost:4202/']],
 };
 
 // Nx plugins for rspack to build config object from Nx options and context.
