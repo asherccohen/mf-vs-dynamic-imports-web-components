@@ -1,7 +1,7 @@
 {
   "name": "remote-module-federation",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/remote-module-federation/src",
+  "sourceRoot": "apps/remoteModuleFederation/src",
   "projectType": "application",
   "tags": [],
   "targets": {
@@ -11,14 +11,14 @@
       "defaultConfiguration": "production",
       "options": {
         "target": "web",
-        "outputPath": "dist/apps/remote-module-federation",
-        "index": "apps/remote-module-federation/src/index.html",
-        "main": "apps/remote-module-federation/src/main.tsx",
-        "tsConfig": "apps/remote-module-federation/tsconfig.app.json",
-        "rspackConfig": "apps/remote-module-federation/rspack.config.js",
+        "outputPath": "dist/apps/remoteModuleFederation",
+        "index": "apps/remoteModuleFederation/src/index.html",
+        "main": "apps/remoteModuleFederation/src/main.tsx",
+        "tsConfig": "apps/remoteModuleFederation/tsconfig.app.json",
+        "rspackConfig": "apps/remoteModuleFederation/rspack.config.js",
         "assets": [
-          "apps/remote-module-federation/src/favicon.ico",
-          "apps/remote-module-federation/src/assets"
+          "apps/remoteModuleFederation/src/favicon.ico",
+          "apps/remoteModuleFederation/src/assets"
         ]
       },
       "configurations": {
