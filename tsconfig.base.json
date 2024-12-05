@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "remoteModuleFederation2/Module": [
+        "apps/remoteModuleFederation2/src/remote-entry.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
