@@ -1,29 +1,21 @@
 import * as React from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
+import '../styles.css';
 
-const RemoteModuleFederation = React.lazy(
-  () => import('remoteModuleFederation/Module')
-);
-
-export function App() {
+export function App({ children }: React.PropsWithChildren) {
   return (
-    <React.Suspense fallback={null}>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/remoteModuleFederation">remoteModuleFederation</Link>
-        </li>
-      </ul>
-      <Routes>
-        <Route path="/" element={<span>Home</span>} />
-        <Route
-          path="/remoteModuleFederation"
-          element={<RemoteModuleFederation />}
-        />
-      </Routes>
-    </React.Suspense>
+    <div className="p-2">
+      <h1>Module Federation Host App</h1>
+
+      <br />
+      <hr />
+      <br />
+
+      {children}
+
+      <br />
+      <hr />
+      <br />
+    </div>
   );
 }
 

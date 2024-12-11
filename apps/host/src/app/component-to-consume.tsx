@@ -1,4 +1,4 @@
-import { createLazyComponentFromRuntimeElement } from './create-runtime-component';
+import { createDynamicImportsComponentFromRuntimeElement } from './create-runtime-component';
 
 //Static types, these should come from a package or other sharing mechanism
 export type ComponentToConsumeProps = {
@@ -7,7 +7,7 @@ export type ComponentToConsumeProps = {
 };
 
 export const LazyComponentToConsumeWeb =
-  createLazyComponentFromRuntimeElement<ComponentToConsumeProps>({
+  createDynamicImportsComponentFromRuntimeElement<ComponentToConsumeProps>({
     runtimeElementsHref: 'http://localhost:4201/main.js',
     // contextPath: '',
     getterMethodName: 'getComponentToExposeElementV1',
