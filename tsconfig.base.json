@@ -17,6 +17,9 @@
     "paths": {
       "remoteModuleFederation/Module": [
         "apps/remoteModuleFederation/src/remote-entry.ts"
+      ],
+      "remoteModuleFederation/DynamicImportsModule": [
+        "apps/remoteModuleFederation/src/app/dynamic-imports/index.ts"
       ]
     }
   },

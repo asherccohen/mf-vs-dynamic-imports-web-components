@@ -1,4 +1,4 @@
-import { lazy, StrictMode, Suspense } from 'react';
+import { FC, lazy, StrictMode, Suspense } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import {
   createBrowserRouter,
@@ -10,7 +10,17 @@ import App from './app/app';
 
 const RemoteReactComponent = lazy(
   () => import('remoteModuleFederation/Module')
-);
+) as FC<any>;
+
+//Verify that the module exported from the remote with a map of fns works
+const RemoteReactComponentAsDynamicImport = lazy(async () => {
+  const module = await import('remoteModuleFederation/DynamicImportsModule');
+
+  const element = (await module.getComponentToExposeElementV1()) as FC<any>;
+  return {
+    default: element,
+  };
+});
 
 const router = createBrowserRouter([
   {
@@ -20,9 +30,6 @@ const router = createBrowserRouter([
           <li>
             <Link to="/">Home</Link>
           </li>
-          {/* <li>
-            <Link to="/remoteModuleFederation">remoteModuleFederation</Link>
-          </li> */}
         </ul>
 
         <br />
@@ -38,16 +45,22 @@ const router = createBrowserRouter([
         errorElement: <>There was an error importing the component</>,
         element: (
           <div className="flex flex-col gap-4">
-            Module Federated React Component
+            Module Federated React Component (from MF remote)
             <div className="flex border-dashed border-2 border-rose-200 p-4">
               <Suspense fallback={<span>Loading...</span>}>
-                <RemoteReactComponent />
+                <RemoteReactComponent
+                  locale={'en'}
+                  onAddClick={() => console.log('add click')}
+                />
               </Suspense>
             </div>
-            Dynamic Import React Component
+            Dynamic Import React Component (from MF remote)
             <div className="flex border-dashed border-2 border-rose-200 p-4">
               <Suspense fallback={<span>Loading...</span>}>
-                {/* <RemoteReactComponent /> */}
+                <RemoteReactComponentAsDynamicImport
+                  locale={'en'}
+                  onAddClick={() => console.log('add click')}
+                />
               </Suspense>
             </div>
           </div>

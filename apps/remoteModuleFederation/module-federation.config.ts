@@ -4,6 +4,7 @@ const config: ModuleFederationConfig = {
   name: 'remoteModuleFederation',
   exposes: {
     './Module': './src/remote-entry.ts',
+    './DynamicImportsModule': './src/app/dynamic-imports/index.ts',
   },
 };
 

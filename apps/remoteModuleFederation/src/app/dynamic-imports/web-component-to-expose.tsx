@@ -19,17 +19,18 @@ export class ComponentToExposeElement extends HTMLElement {
   }
 
   #render(): void {
-    const locale = this.getAttribute('locale');
+    const locale = this.getAttribute('locale') ?? 'en';
+    const onAddClick = this.#properties.onAddClick ?? (() => ({}));
 
-    if (!this.#reactRoot || !locale) {
+    if (
+      !this.#reactRoot
+      //  || !locale || !onAddClick
+    ) {
       return;
     }
 
     this.#reactRoot.render(
-      <ComponentToExpose
-        locale={locale}
-        onAddClick={this.#properties.onAddClick}
-      />
+      <ComponentToExpose locale={locale} onAddClick={onAddClick} />
     );
   }
 
@@ -67,6 +68,8 @@ export class ComponentToExposeElement extends HTMLElement {
   }
 }
 
-customElements.define('component-to-expose', ComponentToExposeElement);
+if (!customElements.get('component-to-expose')) {
+  customElements.define('component-to-expose', ComponentToExposeElement);
+}
 
 export default ComponentToExposeElement;
